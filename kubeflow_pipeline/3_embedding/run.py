@@ -103,12 +103,12 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    
-    parser.add_argument('--model_dir', type=str, default='/model/')
+    pvc_path = "/home/jovyan"
+    parser.add_argument('--model_dir', type=str, default=f'{pvc_path}/model/')
     parser.add_argument('--model_file', type=str, default='model.pt')
     
-    parser.add_argument('--faiss_train_data_path', type=str, default="/data/faiss/train")
-    parser.add_argument('--faiss_test_data_path', type=str, default="/data/faiss/test")
+    parser.add_argument('--faiss_train_data_path', type=str, default=f"{pvc_path}/data/faiss/train")
+    parser.add_argument('--faiss_test_data_path', type=str, default=f"{pvc_path}/data/faiss/test")
     parser.add_argument('--faiss_train_data_file', type=str, default="faiss_train")
     parser.add_argument('--faiss_test_data_file', type=str, default="faiss_test")
 

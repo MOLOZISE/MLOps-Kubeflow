@@ -51,14 +51,14 @@ def validation_data(train_data_file, test_data_file, faiss_train_data_file, fais
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    
-    parser.add_argument('--train_data_path', type=str, default="/data/mnist/train")
-    parser.add_argument('--test_data_path', type=str, default="/data/mnist/test")
+    pvc_path = "/home/jovyan"
+    parser.add_argument('--train_data_path', type=str, default=f"{pvc_path}/data/mnist/train")
+    parser.add_argument('--test_data_path', type=str, default=f"{pvc_path}/data/mnist/test")
     parser.add_argument('--train_data_file', type=str, default="train_mnist")
     parser.add_argument('--test_data_file', type=str, default="test_mnist")
     
-    parser.add_argument('--faiss_train_data_path', type=str, default="/data/faiss/train")
-    parser.add_argument('--faiss_test_data_path', type=str, default="/data/faiss/test")
+    parser.add_argument('--faiss_train_data_path', type=str, default=f"{pvc_path}/data/faiss/train")
+    parser.add_argument('--faiss_test_data_path', type=str, default=f"{pvc_path}/data/faiss/test")
     parser.add_argument('--faiss_train_data_file', type=str, default="faiss_train")
     parser.add_argument('--faiss_test_data_file', type=str, default="faiss_test")
 

@@ -72,7 +72,7 @@ def mnist_pipeline():
         .apply(onprem.mount_pvc("deploy-model-pvc", volume_name="deploy-model", volume_mount_path="/deploy-model"))
 
 if __name__=="__main__":
-    host = "http://220.116.228.93:8089/pipeline"
+    host = "http://192.168.35.101:8080/pipeline"
     namespace = "kubeflow-user-example-com"
     
     pipeline_name = "Mnist"
@@ -82,21 +82,21 @@ if __name__=="__main__":
     experiment_name = "For Develop"
     run_name = "kubeflow study {}".format(version)
 
-    #client = kfp.Client(host=host, namespace=namespace)
+    client = kfp.Client(host=host, namespace=namespace)
     kfp.compiler.Compiler().compile(mnist_pipeline, pipeline_package_path)
 
-    # pipeline_id = client.get_pipeline_id(pipeline_name)
-    # if pipeline_id:
-    #     client.upload_pipeline_version(
-    #         pipeline_package_path=pipeline_package_path,
-    #         pipeline_version_name=version,
-    #         pipeline_name=pipeline_name
-    #     )
-    # else:
-    #     client.upload_pipeline(
-    #         pipeline_package_path=pipeline_package_path,
-    #         pipeline_name=pipeline_name
-    #     )
-    #
-    # experiment = client.create_experiment(name=experiment_name, namespace=namespace)
-    # run = client.run_pipeline(experiment.id, run_name, pipeline_package_path)
+    pipeline_id = client.get_pipeline_id(pipeline_name)
+    if pipeline_id:
+        client.upload_pipeline_version(
+            pipeline_package_path=pipeline_package_path,
+            pipeline_version_name=version,
+            pipeline_name=pipeline_name
+        )
+    else:
+        client.upload_pipeline(
+            pipeline_package_path=pipeline_package_path,
+            pipeline_name=pipeline_name
+        )
+
+    experiment = client.create_experiment(name=experiment_name, namespace=namespace)
+    run = client.run_pipeline(experiment.id, run_name, pipeline_package_path)
