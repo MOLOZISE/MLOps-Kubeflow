@@ -207,9 +207,10 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
+    pvc_path = "/home/jovyan"
         
-    parser.add_argument('--train_data_path', type=str, default="/data/mnist/train")
-    parser.add_argument('--test_data_path', type=str, default="/data/mnist/test")
+    parser.add_argument('--train_data_path', type=str, default=f"{pvc_path}/data/mnist/train")
+    parser.add_argument('--test_data_path', type=str, default=f"{pvc_path}/data/mnist/test")
 
     parser.add_argument('--image_width', type=int, default=28)
     parser.add_argument('--image_height', type=int, default=28)
@@ -226,11 +227,11 @@ if __name__ == "__main__":
     parser.add_argument('--n_gpus', type=int, default=1)
     parser.add_argument('--num_workers', type=int, default=2)
 
-    parser.add_argument('--model_dir', type=str, default='/model/')
+    parser.add_argument('--model_dir', type=str, default=f'{pvc_path}/model/')
     parser.add_argument('--model_file', type=str, default='model.pt')
     parser.add_argument('--metric_file', type=str, default='metric.pt')
 
-    parser.add_argument('--ckpt_dir', type=str, default='/model/ckpt/')
+    parser.add_argument('--ckpt_dir', type=str, default=f'{pvc_path}/model/ckpt/')
     parser.add_argument('--model_ckpt', type=str, default='model.ckpt')
     parser.add_argument('--metric_ckpt', type=str, default='metric.ckpt')
 

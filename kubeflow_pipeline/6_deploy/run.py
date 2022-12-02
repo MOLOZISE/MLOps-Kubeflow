@@ -227,8 +227,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--model_name', type=str, default="embedding")
-    
-    parser.add_argument('--model_dir', type=str, default='/model')
+    pvc_path = "/home/jovyan"
+    parser.add_argument('--model_dir', type=str, default=f'{pvc_path}/model')
     parser.add_argument('--model_file', type=str, default='model.pt')
     parser.add_argument('--faiss_model_file', type=str, default='faiss_index.bin')
     parser.add_argument('--faiss_label_file', type=str, default='faiss_label.json')
@@ -238,8 +238,8 @@ if __name__ == "__main__":
     
     parser.add_argument('--handler', type=str, default="handler.py")
 
-    parser.add_argument('--export_path', type=str, default='/deploy-model/model-store')
-    parser.add_argument('--config_path', type=str, default='/deploy-model/config')
+    parser.add_argument('--export_path', type=str, default=f'{pvc_path}/deploy-model/model-store')
+    parser.add_argument('--config_path', type=str, default=f'{pvc_path}/deploy-model/config')
 
     parser.add_argument('--max_num_models', type=int, default=3)
 
